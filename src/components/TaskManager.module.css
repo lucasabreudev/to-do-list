@@ -1,0 +1,45 @@
+.taskManager {
+    width: 736px;
+}
+
+.taskManager header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.taskManager main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 64px 24px;
+
+
+
+    border-top: 1px solid #333333;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.taskManager main img {
+    margin-bottom: 1rem;
+}
+
+.taskManager>strong {
+    font-size: 0.875rem;
+}
+
+.taskManager header span {
+    background: var(--gray-400);
+    color: var(--gray-200);
+    border-radius: 999px;
+    padding: 2px 8px;
+}
+
+.createdTasks {
+    color: var(--blue-300)
+}
+
+.completedTasks {
+    color: var(--purple-300)
+}
