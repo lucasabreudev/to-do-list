@@ -1,35 +1,4 @@
 .wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 4rem;
-}
-
-.newTask {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: calc(0px - 1.5rem - 6px);
-}
-
-.newTask input {
-    background: var(--gray-500);
-    color: var(--gray-100);
-    padding: 1rem;
-    width: 40rem;
-    border: 1px solid var(--gray-700);
-    border-radius: 8px;
-}
-
-.newTask button[type=submit] {
-    padding: 1rem;
-    gap: 8px;
-    border-radius: 8px;
-    background: var(--blue-500);
-    color: var(--gray-100);
-    font-weight: bold;
-    font-size: 0.875rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.1s;
 }

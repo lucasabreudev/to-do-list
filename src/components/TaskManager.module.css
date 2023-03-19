@@ -1,35 +1,44 @@
-.taskManager {
-    width: 736px;
+.newTask {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: calc(0px - 1.5rem - 6px);
 }
 
-.taskManager header {
+.newTask input {
+    background: var(--gray-500);
+    color: var(--gray-100);
+    padding: 1rem;
+    width: 40rem;
+    border: 1px solid var(--gray-700);
+    border-radius: 8px;
+}
+
+.newTask button[type=submit] {
+    padding: 1rem;
+    gap: 8px;
+    border-radius: 8px;
+    background: var(--blue-500);
+    color: var(--gray-100);
+    font-weight: bold;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.1s;
+}
+
+.taskList header {
     display: flex;
     justify-content: space-between;
+    margin-top: 4rem;
 }
 
-.taskManager main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 64px 24px;
-
-
-
-    border-top: 1px solid #333333;
-    border-radius: 8px;
-    margin-top: 1.5rem;
-}
-
-.taskManager main img {
-    margin-bottom: 1rem;
-}
-
-.taskManager>strong {
+.taskList>strong {
     font-size: 0.875rem;
 }
 
-.taskManager header span {
+.taskList header span {
     background: var(--gray-400);
     color: var(--gray-200);
     border-radius: 999px;

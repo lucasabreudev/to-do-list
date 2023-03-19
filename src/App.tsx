@@ -10,13 +10,7 @@ export function App() {
       <Header />
 
       <main>
-        <div className={styles.newTask}>
-          <input type="text" placeholder='Adicione uma nova tarefa' />
-          <button type="submit">
-            Criar
-            <PlusCircle size={16} />
-          </button>
-        </div>
+
         <div className={styles.wrapper} >
 
           <TaskManager />
