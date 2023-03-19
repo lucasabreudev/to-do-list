@@ -1,6 +1,7 @@
 import styles from './TaskManager.module.css';
 import { PlusCircle } from 'phosphor-react';
 import { EmptyList } from './EmptyList';
+import { Task } from './Task';
 
 export function TaskManager() {
     return (
@@ -18,7 +19,7 @@ export function TaskManager() {
                     <strong className={styles.createdTasks}> Tarefas criadas <span>0</span> </strong>
                     <strong className={styles.completedTasks}> Concluídas <span>0</span> </strong>
                 </header>
-                <EmptyList />
+                {true ? <Task /> : <EmptyList />}
             </div>
         </article>
     )

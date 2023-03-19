@@ -1,0 +1,60 @@
+.taskBox {
+    display: flex;
+    padding: 1rem;
+    gap: 1.25rem;
+
+    background: var(--gray-500);
+
+    border: 1px solid var(--gray-400);
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px var(--gray-700);
+}
+
+.taskBox p {
+    font-size: 0.825rem;
+    line-height: 140%;
+    color: var(--gray-100);
+    width: 39.5rem;
+}
+
+.taskBox button {
+    background: transparent;
+    border: 0;
+    color: var(--gray-300);
+    cursor: pointer;
+    line-height: 0;
+    border-radius: 4px;
+    margin-top: -1rem;
+}
+
+.taskBox button:hover {
+    color: var(--danger);
+}
+
+.taskBox input[type=checkbox] {
+    width: 1rem;
+    height: 1rem;
+    color: var(--blue-300);
+    appearance: none;
+    background: none;
+    border: 2px solid;
+    border-radius: 50%;
+    transition: background 0.2s;
+    cursor: pointer;
+    position: relative;
+    margin-top: 2px;
+}
+
+.taskBox input[type=checkbox]:checked {
+    border-color: var(--purple-300);
+    background: var(--purple-300);
+}
+
+.taskBox input[type=checkbox]:checked::before {
+    content: '\2714';
+    color: var(--gray-100);
+    font-size: 0.6rem;
+    position: absolute;
+    top: 0px;
+    left: 2.7px;
+}
