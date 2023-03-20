@@ -3,6 +3,8 @@ import styles from './Task.module.css';
 
 export interface TaskProps {
     task: TaskType;
+    onCompleteTask: (id: string) => void;
+    onDeleteTask: (id: string) => void;
 }
 export interface TaskType {
     id: string;
@@ -10,11 +12,15 @@ export interface TaskType {
     done: boolean;
 }
 
-export function Task({ task }: TaskProps) {
+export function Task({ task, onCompleteTask, onDeleteTask }: TaskProps) {
+    function handleCompleteTask() {
+        onCompleteTask(task.id);
+    }
+
     return (
         <div className={styles.taskBox}>
-            <input type='checkbox' />
-            <p>
+            <input onClick={handleCompleteTask} type='checkbox' />
+            <p className={task.done ? styles.completedTask : ''}>
                 {task.title}
             </p>
             <button title='Deletar tarefa'>

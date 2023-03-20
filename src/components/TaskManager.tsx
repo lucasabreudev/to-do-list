@@ -21,6 +21,7 @@ export function TaskManager() {
         }
 
         setTasks([...tasks, newTask]);
+        setNewTaskText('');
     }
 
     function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
@@ -30,6 +31,19 @@ export function TaskManager() {
 
     function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
         event.target.setCustomValidity('Esse campo é obrigatório!');
+    }
+
+    function completeTask(id: string) {
+        const newTasks = tasks.map(task => {
+            if (task.id === id) {
+                return {
+                    ...task,
+                    done: !task.done
+                }
+            }
+            return task;
+        })
+        setTasks(newTasks)
     }
 
     const completedTasksCounter = tasks.filter(task => task.done).length;
@@ -59,7 +73,7 @@ export function TaskManager() {
                         Concluídas <span>{tasks.length > 0 ? ` ${completedTasksCounter} de ${tasks.length}` : 0}</span>
                     </strong>
                 </header>
-                {tasks.length > 0 ? <TaskList tasks={tasks} /> : <EmptyList />}
+                {tasks.length > 0 ? <TaskList tasks={tasks} onCompleteTask={completeTask} onDeleteTask={() => { }} /> : <EmptyList />}
             </div>
         </article>
     )

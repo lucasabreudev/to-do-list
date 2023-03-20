@@ -2,8 +2,8 @@
     display: flex;
     padding: 1rem;
     gap: 1.25rem;
-
     background: var(--gray-500);
+    color: var(--gray-100);
 
     border: 1px solid var(--gray-400);
     border-radius: 8px;
@@ -12,10 +12,14 @@
     margin-bottom: 0.75rem;
 }
 
+.completedTask {
+    text-decoration-line: line-through;
+    color: var(--gray-300);
+}
+
 .taskBox p {
     font-size: 0.825rem;
     line-height: 140%;
-    color: var(--gray-100);
     width: 39.5rem;
 }
 
