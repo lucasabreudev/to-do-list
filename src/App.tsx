@@ -7,11 +7,12 @@ export function App() {
   return (
     <div>
       <Header />
-      <main>
-        <div className={styles.wrapper} >
+      <div className={styles.wrapper} >
+        <main>
           <TaskManager />
-        </div>
-      </main>
+        </main>
+
+      </div>
     </div>
   )
 }

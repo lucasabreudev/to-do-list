@@ -14,6 +14,10 @@
     border-radius: 8px;
 }
 
+.newTask input:focus {
+    border: none;
+}
+
 .newTask button[type=submit] {
     padding: 1rem;
     gap: 8px;
