@@ -16,6 +16,9 @@ export function Task({ task, onCompleteTask, onDeleteTask }: TaskProps) {
     function handleCompleteTask() {
         onCompleteTask(task.id);
     }
+    function handleDeleteTask() {
+        onDeleteTask(task.id);
+    }
 
     return (
         <div className={styles.taskBox}>
@@ -23,7 +26,7 @@ export function Task({ task, onCompleteTask, onDeleteTask }: TaskProps) {
             <p className={task.done ? styles.completedTask : ''}>
                 {task.title}
             </p>
-            <button title='Deletar tarefa'>
+            <button onClick={handleDeleteTask} title='Deletar tarefa'>
                 <Trash size={20} />
             </button>
         </div>

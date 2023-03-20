@@ -46,6 +46,14 @@ export function TaskManager() {
         setTasks(newTasks)
     }
 
+    function deleteTask(id: string) {
+        const tasksWithoutDeletedOne = tasks.filter(task => {
+            return task.id !== id
+        });
+
+        setTasks(tasksWithoutDeletedOne);
+    }
+
     const completedTasksCounter = tasks.filter(task => task.done).length;
 
     return (
@@ -73,7 +81,7 @@ export function TaskManager() {
                         Concluídas <span>{tasks.length > 0 ? ` ${completedTasksCounter} de ${tasks.length}` : 0}</span>
                     </strong>
                 </header>
-                {tasks.length > 0 ? <TaskList tasks={tasks} onCompleteTask={completeTask} onDeleteTask={() => { }} /> : <EmptyList />}
+                {tasks.length > 0 ? <TaskList tasks={tasks} onCompleteTask={completeTask} onDeleteTask={deleteTask} /> : <EmptyList />}
             </div>
         </article>
     )
