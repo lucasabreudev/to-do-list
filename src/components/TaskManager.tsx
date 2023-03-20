@@ -4,35 +4,60 @@ import { EmptyList } from './EmptyList';
 import { TaskList } from './TaskList';
 import { TaskType } from './Task';
 import { v4 as uuidv4 } from 'uuid';
-
-const tasks: TaskType[] =
-    [{
-        id: uuidv4(),
-        title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        done: true
-    },
-    {
-        id: uuidv4(),
-        title: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        done: false
-    }]
-
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 
 export function TaskManager() {
+    const [tasks, setTasks] = useState<TaskType[]>([]);
+
+    const [newTaskText, setNewTaskText] = useState('');
+
+    function handleCreateNewTask(event: FormEvent) {
+        event.preventDefault();
+
+        const newTask: TaskType = {
+            id: uuidv4(),
+            title: newTaskText,
+            done: false
+        }
+
+        setTasks([...tasks, newTask]);
+    }
+
+    function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
+        event.target.setCustomValidity('');
+        setNewTaskText(event.target.value);
+    }
+
+    function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
+        event.target.setCustomValidity('Esse campo é obrigatório!');
+    }
+
+    const completedTasksCounter = tasks.filter(task => task.done).length;
+
     return (
         <article>
-            <div className={styles.newTask}>
-                <input type="text" placeholder='Adicione uma nova tarefa' />
+            <form onSubmit={handleCreateNewTask} className={styles.newTask}>
+                <input
+                    type="text"
+                    name="task"
+                    placeholder='Adicione uma nova tarefa'
+                    value={newTaskText}
+                    onChange={handleNewTaskChange}
+                    onInvalid={handleNewTaskInvalid}
+                    required
+                />
                 <button type="submit">
                     Criar
                     <PlusCircle size={16} />
                 </button>
-            </div>
+            </form>
 
             <div className={styles.taskList}>
                 <header>
                     <strong className={styles.createdTasks}> Tarefas criadas <span>{tasks.length}</span> </strong>
-                    <strong className={styles.completedTasks}> Concluídas <span>0</span> </strong>
+                    <strong className={styles.completedTasks}>
+                        Concluídas <span>{tasks.length > 0 ? ` ${completedTasksCounter} de ${tasks.length}` : 0}</span>
+                    </strong>
                 </header>
                 {tasks.length > 0 ? <TaskList tasks={tasks} /> : <EmptyList />}
             </div>
