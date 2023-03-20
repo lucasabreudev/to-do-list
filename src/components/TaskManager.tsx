@@ -55,6 +55,8 @@ export function TaskManager() {
     }
 
     const completedTasksCounter = tasks.filter(task => task.done).length;
+    const isNewTaskEmpty = newTaskText.length === 0;
+
 
     return (
         <article>
@@ -68,7 +70,7 @@ export function TaskManager() {
                     onInvalid={handleNewTaskInvalid}
                     required
                 />
-                <button type="submit">
+                <button type="submit" disabled={isNewTaskEmpty}>
                     Criar
                     <PlusCircle size={16} />
                 </button>
