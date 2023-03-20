@@ -1,7 +1,22 @@
 import styles from './TaskManager.module.css';
 import { PlusCircle } from 'phosphor-react';
 import { EmptyList } from './EmptyList';
-import { Task } from './Task';
+import { TaskList } from './TaskList';
+import { TaskType } from './Task';
+import { v4 as uuidv4 } from 'uuid';
+
+const tasks: TaskType[] =
+    [{
+        id: uuidv4(),
+        title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        done: true
+    },
+    {
+        id: uuidv4(),
+        title: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        done: false
+    }]
+
 
 export function TaskManager() {
     return (
@@ -16,10 +31,10 @@ export function TaskManager() {
 
             <div className={styles.taskList}>
                 <header>
-                    <strong className={styles.createdTasks}> Tarefas criadas <span>0</span> </strong>
+                    <strong className={styles.createdTasks}> Tarefas criadas <span>{tasks.length}</span> </strong>
                     <strong className={styles.completedTasks}> Concluídas <span>0</span> </strong>
                 </header>
-                {true ? <Task /> : <EmptyList />}
+                {tasks.length > 0 ? <TaskList tasks={tasks} /> : <EmptyList />}
             </div>
         </article>
     )
